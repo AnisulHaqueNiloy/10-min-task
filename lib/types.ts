@@ -19,12 +19,17 @@ export interface CourseData {
   start_at: string;
   media: Media[];
   checklist: ChecklistItem[];
-  seo: any[];
+  seo: SEOData[];
   cta_text: CtaText;
   sections: Section[];
   is_cohort_based_course: boolean;
   secondary_cta_group: any[];
   delivery_method: string;
+}
+
+export interface SEOData {
+  title?: string;
+  description?: string;
 }
 
 export interface OldInfo {
