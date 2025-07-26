@@ -1,3 +1,4 @@
+import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import { getCourseData } from "@/lib/api";
 import { Suspense } from "react";
@@ -18,6 +19,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gray-100">
       <Suspense>
+        <Header />
         <CourseContent />
       </Suspense>
     </div>

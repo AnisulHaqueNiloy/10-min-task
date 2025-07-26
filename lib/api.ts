@@ -1,6 +1,8 @@
 //@ts-ignore;
 import { ApiResponse } from "./types";
 
+import { useLanguageStore } from "./store";
+
 export async function getCourseData(lang = "bn"): Promise<ApiResponse> {
   const response = await fetch(
     `https://api.10minuteschool.com/discovery-service/api/v1/products/ielts-course?lang=${lang}`,
