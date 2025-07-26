@@ -13,7 +13,6 @@ export default function Header() {
       <div className="flex items-center space-x-4">
         <h1 className="text-xl font-bold text-violet-400">10 Minute School</h1>
       </div>
-      {/* <LanguageSwitcher />  */}
     </motion.header>
   );
 }
