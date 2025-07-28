@@ -9,6 +9,7 @@ import FeaturesSection from "./tabs/FeatureSection";
 import PointersSection from "./tabs/PointerSection";
 import ExclusiveFeaturesSection from "./tabs/ExclusiveFeatureSection";
 import AboutSection from "./tabs/AboutSection";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface TabbedSectionsProps {
   sections: Section[];
@@ -135,8 +136,7 @@ export default function TabSection({ sections }: TabbedSectionsProps) {
             className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white shadow-lg rounded-full p-2 hover:bg-gray-50 transition-colors border border-gray-200"
           >
             {" "}
-            Left
-            {/* <ChevronLeft className="w-4 h-4 text-gray-600" /> */}
+            <ChevronLeft className="w-4 h-4 text-gray-600" />
           </button>
 
           {/* Scrollable Tab Container */}
@@ -166,8 +166,7 @@ export default function TabSection({ sections }: TabbedSectionsProps) {
             onClick={() => scrollTabs("right")}
             className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white shadow-lg rounded-full p-2 hover:bg-gray-50 transition-colors border border-gray-200"
           >
-            Right
-            {/* <ChevronRight className="w-4 h-4 text-gray-600" /> */}
+            <ChevronRight className="w-4 h-4 text-gray-600" />
           </button>
         </div>
       </div>
