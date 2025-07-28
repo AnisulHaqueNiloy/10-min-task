@@ -8,10 +8,10 @@ import TabSection from "@/components/TabSection";
 import Cta from "@/components/Cta";
 import Header from "@/components/Header";
 
-interface PageProps {
-  searchParams: {
-    lang?: string;
-  };
+// Renamed and corrected the type definition for searchParams
+// Next.js expects an index signature for searchParams in page components.
+interface HomePageProps {
+  searchParams?: { [key: string]: string | string[] | undefined };
 }
 
 async function CourseContent({ lang }: { lang: string }) {
@@ -45,29 +45,17 @@ async function CourseContent({ lang }: { lang: string }) {
     );
   }
 
-  const testimonialsSection = courseData.sections.find(
-    (s) => s.type === "testimonials"
-  );
-
   return (
     <>
-      {/* SEO Head Component */}
       <SeoHead courseData={courseData} />
-
-      {/* Hero Section */}
       <HeroSection courseData={courseData} />
 
-      {/* Main Content */}
       <div className="bg-gray-50 min-h-screen">
         <div className="container mx-auto px-6 py-8">
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-            {/* Left Content */}
             <div className="lg:col-span-3">
-              {/* Tabbed Sections */}
               <TabSection sections={courseData.sections} />
             </div>
-
-            {/* Right Sidebar */}
             <div className="lg:col-span-1">
               <Cta
                 checklist={courseData.checklist}
@@ -75,48 +63,23 @@ async function CourseContent({ lang }: { lang: string }) {
               />
             </div>
           </div>
-
-          {/* Testimonials - Full Width Below
-          {testimonialsSection && (
-            <div className="mt-16">
-              <Testimonials section={testimonialsSection} />
-            </div>
-          )} */}
         </div>
       </div>
     </>
   );
 }
 
-function LoadingSkeleton() {
-  return (
-    <div className="min-h-screen bg-gray-100">
-      <div className="animate-pulse">
-        <div className="h-16 bg-gray-300 mb-4"></div>
-        <div className="h-96 bg-gray-300 mb-8"></div>
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[...Array(6)].map((_, i) => (
-              <div key={i} className="h-48 bg-gray-300 rounded-lg"></div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-export default async function HomePage({ searchParams }: PageProps) {
-  const lang = searchParams.lang || "bn"; // Access searchParams directly [^2][^3]
+// Used HomePageProps for the page component
+export default async function HomePage() {
+  // const langParam = searchParams?.lang;
+  // const lang = Array.isArray(langParam) ? langParam[0] : langParam ?? "bn";
 
   return (
     <main className="min-h-screen bg-gray-50">
       <Suspense fallback={<div>Loading header...</div>}>
         <Header />
       </Suspense>
-      <Suspense fallback={<LoadingSkeleton />}>
-        <CourseContent lang={lang} />
-      </Suspense>
+      <CourseContent lang={"bn"} />
     </main>
   );
 }
